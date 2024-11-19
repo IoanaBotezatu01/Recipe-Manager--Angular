@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # RecipeManager
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
@@ -25,3 +26,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+=======
+# Personal-Projects
+>>>>>>> 235bba1a4d6d55c34eb42cf91ec354aaf3509eea
