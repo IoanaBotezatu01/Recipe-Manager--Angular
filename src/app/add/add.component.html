@@ -1,0 +1,43 @@
+<form class="add-recipe-form" (ngSubmit)="addRecipe()">
+    <h2>Add a New Recipe</h2>
+    
+    <div class="form-group">
+      <label for="name">Recipe Name:</label>
+      <input type="text" id="name" name="name" required />
+    </div>
+  
+    <div class="form-group">
+      <label for="ingredients">Ingredients:</label>
+      <textarea id="ingredients"name="ingredients" required></textarea>
+    </div>
+  
+    <div class="form-group">
+      <label for="difficulty">Difficulty:</label>
+      <select id="difficulty" name="difficulty" required>
+        <option value="1/5">1/5</option>
+        <option value="2/5">3/5</option>
+        <option value="3/5">3/5</option>
+        <option value="4/5">4/5</option>
+        <option value="5/5">5/5</option>
+      </select>
+    </div>
+  
+    <div class="form-group">
+      <label for="time">Cooking Time (in minutes):</label>
+      <input type="number" id="time" name="time" required />
+    </div>
+  
+    <div class="form-group">
+      <label for="vegan">Is it Vegan?</label>
+      <input type="checkbox" id="vegan"  name="vegan" />
+    </div>
+  
+    <div class="form-group">
+      <label for="photo">Recipe Photo URL:</label>
+      <input type="text" id="photo" name="photo" />
+    </div>
+  
+    <button type="submit" [disabled]="!newRecipe.name || !newRecipe.ingredients || !newRecipe.difficulty || !newRecipe.time" (click)="addRecipe()">Add Recipe</button>
+    
+  </form>
+  

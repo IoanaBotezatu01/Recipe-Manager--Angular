@@ -1,0 +1,15 @@
+<section>
+    <img [src]="recipe?.photo" alt="photo of food">
+    <h1>Make a {{recipe?.name}}!</h1>
+    <p class="ingredients">You will need:</p>
+    <p  class="c1"> {{recipe?.ingredients}}</p>
+    <p class="textinstr">Just follow the next instructions:</p>
+    <p class="instr">{{recipe?.instructions}}</p>
+    <p class="congrats">
+        Difficulty level:{{recipe?.difficulty}}
+    </p>
+    
+    <p class="congrats">You can make it!</p>
+    <br>
+    <a [routerLink]="['/']">See more recipes!</a>
+</section>
