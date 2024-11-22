@@ -19,7 +19,8 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 <app-recipe
   *ngFor="let recipe of filteredList" 
   [recipe]="recipe"
-  [deleteRecipe]="deleteRecipe.bind(this)">
+   (recipeDeleted)="removeRecipeFromList($event)"
+  >
 </app-recipe>
 </section>`,
   styleUrl: './home.component.css'
@@ -50,12 +51,9 @@ export class HomeComponent {
     this.isVegan=!this.isVegan;
 
   }
-  deleteRecipe(recipeId:number):void
-  {
-  this.recipeList=this.recipeList.filter(r=>r.id!==recipeId);
-  this.filteredList=this.recipeList;
+  removeRecipeFromList(recipeId: number): void {
+    this.filteredList = this.filteredList.filter((recipe) => recipe.id !== recipeId);
+    console.log(`Recipe with ID ${recipeId} removed from the list.`);
   }
-  addRecipe(recipe:Irecipe):void{
-    
-  }
+  
 }

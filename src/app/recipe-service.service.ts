@@ -22,11 +22,39 @@ export class RecipeServiceService {
   baseUrl = 'https://images.unsplash.com';
   recipeList: Irecipe[] = [];
 
-  addRecipe(newRecipe: Irecipe): Promise<void> {
-    
-    return new Promise((resolve) => {
-      console.log('Recipe added:', newRecipe);
-      resolve();
+  async addRecipe(newRecipe: Irecipe): Promise<Irecipe> {
+
+    const recipes = await this.getAllRecipes();
+    const maxId = recipes.length ? Math.max(...recipes.map(r => r.id)) : 0;
+    newRecipe.id = maxId + 1;
+    const response = await fetch(this.url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newRecipe),
     });
+
+    if (!response.ok) {
+      throw new Error(`Failed to add recipe: ${response.statusText}`);
+    }
+
+    return await response.json(); 
   }
+  
+  
+  async deleteRecipe(recipeId: number): Promise<void> {
+    try {
+      const response = await fetch(`${this.url}/${recipeId}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) {
+        throw new Error(`Failed to delete recipe with ID ${recipeId}. Status: ${response.status}`);
+      }
+      console.log(`Recipe with ID ${recipeId} deleted successfully.`);
+    } catch (error) {
+      console.error('Error deleting recipe:', error);
+    }
+  }
+  
 }
